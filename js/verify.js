@@ -28,7 +28,8 @@ const DOMAINS = {
     UI: "UI/UX Design",
     WD: "Web Development",
     AD: "Android Development",
-    DS: "Data Science"
+    DS: "Data Science",
+    CCFS: "Full Stack Development Course Completion"
 };
 
 // =====================================
