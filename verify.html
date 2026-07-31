@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Certificate Verification | BSVS</title>
+
+    <link rel="icon" href="assets/logo/TabIcon.png">
+
+    <link rel="stylesheet" href="css/style.css">
+    
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header>
+
+        <div class="container">
+
+            <div class="logo">
+
+    <img src="assets/logo/logo.png" alt="BSVS Logo" class="header-logo">
+
+</div>
+
+        </div>
+
+    </header>
+
+    <!-- Verification Section -->
+
+    <section class="verify-section">
+
+        <!-- Loading -->
+
+        <div class="verify-card" id="loadingCard">
+
+            <div class="loading-icon">
+
+                <i class="fa-solid fa-spinner fa-spin"></i>
+
+            </div>
+
+            <h2>Verifying Certificate...</h2>
+
+            <p>Please wait while we verify your certificate.</p>
+
+        </div>
+
+        <!-- Success -->
+
+        <div class="verify-card success-card" id="successCard" style="display:none;">
+
+            <div class="verified-icon">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+            </div>
+
+            <span class="verified-badge">
+
+                VERIFIED
+
+            </span>
+
+            <h2>
+
+                Certificate Successfully Verified
+
+            </h2>
+
+            <p class="success-message">
+
+                This certificate has been successfully verified against the
+                official records of
+                <strong>Better Solution For Valuable Skills (BSVS)</strong>.
+
+            </p>
+
+            <div class="info-grid">
+
+                <div class="info-box">
+
+                    <span>Student Name</span>
+
+                    <h3 id="studentName"></h3>
+
+                </div>
+
+                <div class="info-box">
+
+                    <span>Certificate Number</span>
+
+                    <h3 id="certificateNumber"></h3>
+
+                </div>
+
+                <div class="info-box">
+
+                    <span>Domain</span>
+
+                    <h3 id="domain"></h3>
+
+                </div>
+
+                <div class="info-box">
+
+                    <span>Issue Date</span>
+
+                    <h3 id="issueDate"></h3>
+
+                </div>
+
+                <div class="info-box">
+
+                    <span>Status</span>
+
+                    <h3>
+
+                        <span class="status-badge" id="status"></span>
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+            <button onclick="window.location='index.html'">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Verify Another Certificate
+
+            </button>
+
+        </div>
+
+        <!-- Error -->
+
+        <div class="verify-card error-card" id="errorCard" style="display:none;">
+
+            <div class="error-icon">
+
+                <i class="fa-solid fa-circle-xmark"></i>
+
+            </div>
+
+            <h2>
+
+                Certificate Not Found
+
+            </h2>
+
+            <p>
+
+                The certificate number entered could not be found in the
+                official BSVS database.
+
+            </p>
+
+            <button onclick="window.location='index.html'">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Back to Verification
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+
+            © 2026 Better Solution For Valuable Skills (BSVS)
+
+        </p>
+
+        <span>
+
+            All Rights Reserved.
+
+        </span>
+
+    </footer>
+
+    <script type="module" src="js/verify.js"></script>
+
+</body>
+
+</html>
