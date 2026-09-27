@@ -1,5 +1,5 @@
 // =====================================
-// BSVS Certificate Verification
+// BSVS Verification
 // verify.js
 // =====================================
 
@@ -14,26 +14,10 @@ import {
 // DEFAULT VALUES
 // =====================================
 
-const ISSUE_DATE = "31 July 2026";
-const STATUS = "🟢 VALID";
-
-// Domain Codes
-const DOMAINS = {
-    FE: "Frontend Development",
-    FS: "Full Stack Development",
-    PY: "Python Development",
-    JA: "Java Development",
-    AI: "Artificial Intelligence",
-    ML: "Machine Learning",
-    UI: "UI/UX Design",
-    WD: "Web Development",
-    AD: "Android Development",
-    DS: "Data Science",
-    CCFS: "Full Stack Development Course Completion"
-};
+const DEFAULT_STATUS = "🟢 VALID";
 
 // =====================================
-// Read Certificate Number
+// Read Verification ID
 // =====================================
 
 const params = new URLSearchParams(window.location.search);
@@ -44,6 +28,10 @@ const loadingCard = document.getElementById("loadingCard");
 const successCard = document.getElementById("successCard");
 const errorCard = document.getElementById("errorCard");
 
+// =====================================
+// Start Verification
+// =====================================
+
 if (!certificateNumber) {
 
     loadingCard.style.display = "none";
@@ -51,23 +39,41 @@ if (!certificateNumber) {
 
 } else {
 
-    verifyCertificate(certificateNumber);
+    verifyCertificate(certificateNumber.trim());
 
 }
 
 // =====================================
-// Verify Certificate
+// Verify Certificate / LOR
 // =====================================
 
 async function verifyCertificate(id) {
 
     try {
 
-        const docRef = doc(db, "certificates", id);
+        // -------------------------------------
+        // Decide which Firestore collection
+        // -------------------------------------
+
+        const isLOR = id.toUpperCase().startsWith("BSVS-LOR-");
+
+        const collectionName = isLOR
+            ? "lors"
+            : "certificates";
+
+        // -------------------------------------
+        // Get document
+        // -------------------------------------
+
+        const docRef = doc(db, collectionName, id);
 
         const docSnap = await getDoc(docRef);
 
         loadingCard.style.display = "none";
+
+        // -------------------------------------
+        // Document Found
+        // -------------------------------------
 
         if (docSnap.exists()) {
 
@@ -77,37 +83,58 @@ async function verifyCertificate(id) {
             document.getElementById("studentName").textContent =
                 data.studentName || "-";
 
-            // Certificate Number
+            // Certificate / LOR Number
             document.getElementById("certificateNumber").textContent =
                 id;
 
-            // Get Domain Code
-            const parts = id.split("-");
+            // Domain
+            document.getElementById("domain").textContent =
+                data.domain || "-";
 
-            let domain = "-";
+            // -------------------------------------
+            // Issue Date
+            // -------------------------------------
 
-            if (parts.length >= 3) {
+            if (isLOR) {
 
-                const code = parts[2];
+                document.getElementById("issueDate").textContent =
+                    "-";
 
-                domain = DOMAINS[code] || "Unknown Domain";
+            } else {
+
+                document.getElementById("issueDate").textContent =
+                    data.issueDate || "-";
 
             }
 
-            // Domain
-            document.getElementById("domain").textContent = domain;
-
-            // Issue Date
-            document.getElementById("issueDate").textContent =
-                ISSUE_DATE;
-
+            // -------------------------------------
             // Status
-            document.getElementById("status").textContent =
-                STATUS;
+            // -------------------------------------
 
+            if (isLOR) {
+
+                document.getElementById("status").textContent =
+                    "🟢 VALID";
+
+            } else {
+
+                const status = data.status || "Valid";
+
+                document.getElementById("status").textContent =
+                    status.toLowerCase() === "valid"
+                        ? DEFAULT_STATUS
+                        : status;
+
+            }
+
+            // Show success
             successCard.style.display = "block";
 
         } else {
+
+            // -------------------------------------
+            // Document Not Found
+            // -------------------------------------
 
             errorCard.style.display = "block";
 
