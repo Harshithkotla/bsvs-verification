@@ -1,207 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Certificate Verification | BSVS</title>
-
-    <link rel="icon" href="assets/logo/TabIcon.png">
-
-    <link rel="stylesheet" href="css/style.css">
-    
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Verify an official BSVS Certificate or Letter of Recommendation.">
+  <title>BSVS Document Verification</title>
+  <link rel="icon" href="assets/logo/TabIcon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
+  <header class="site-header compact-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html"><img src="assets/logo/logo.png" alt="BSVS Logo"></a>
+      <a class="nav-link" href="home.html"><i class="fa-solid fa-house"></i> BSVS Website</a>
+    </div>
+  </header>
 
-    <!-- Header -->
-
-    <header>
-
-        <div class="container">
-
-            <div class="logo">
-
-    <img src="assets/logo/logo.png" alt="BSVS Logo" class="header-logo">
-
-</div>
-
+  <main class="result-main">
+    <section class="result-section">
+      <div class="container narrow">
+        <div class="result-card" id="loadingCard">
+          <div class="icon-circle spinning"><i class="fa-solid fa-spinner"></i></div>
+          <h2>Verifying Document...</h2>
+          <p>Please wait while we check the official BSVS records.</p>
         </div>
 
-    </header>
+        <div class="result-card success-card" id="successCard" hidden>
+          <div class="verified-icon"><i class="fa-solid fa-check"></i></div>
+          <span class="status-pill">VERIFIED</span>
+          <h1>Document Successfully Verified</h1>
+          <p class="result-lead">This document has been successfully verified against the official records of <strong>Better Solution For Valuable Skills (BSVS)</strong>.</p>
 
-    <!-- Verification Section -->
+          <div class="info-grid">
+            <div class="info-box accent-blue"><span>Student Name</span><strong id="studentName">-</strong></div>
+            <div class="info-box accent-green"><span id="documentIdLabel">Document ID</span><strong id="certificateNumber">-</strong></div>
+            <div class="info-box accent-gold"><span>Domain</span><strong id="domain">-</strong></div>
+            <div class="info-box accent-purple" id="issueDateBox"><span>Issue Date</span><strong id="issueDate">-</strong></div>
+            <div class="info-box accent-teal"><span>Status</span><strong class="valid-text" id="status">VALID</strong></div>
+            <div class="info-box accent-slate"><span>Document Type</span><strong id="documentType">-</strong></div>
+          </div>
 
-    <section class="verify-section">
-
-        <!-- Loading -->
-
-        <div class="verify-card" id="loadingCard">
-
-            <div class="loading-icon">
-
-                <i class="fa-solid fa-spinner fa-spin"></i>
-
-            </div>
-
-            <h2>Verifying Certificate...</h2>
-
-            <p>Please wait while we verify your certificate.</p>
-
+          <div class="result-actions">
+            <a class="primary-btn" href="index.html"><i class="fa-solid fa-arrow-left"></i> Verify Another Document</a>
+            <a class="secondary-btn" href="home.html"><i class="fa-solid fa-house"></i> Visit BSVS</a>
+          </div>
         </div>
 
-        <!-- Success -->
-
-        <div class="verify-card success-card" id="successCard" style="display:none;">
-
-            <div class="verified-icon">
-
-                <i class="fa-solid fa-circle-check"></i>
-
-            </div>
-
-            <span class="verified-badge">
-
-                VERIFIED
-
-            </span>
-
-            <h2>
-
-                Certificate Successfully Verified
-
-            </h2>
-
-            <p class="success-message">
-
-                This certificate has been successfully verified against the
-                official records of
-                <strong>Better Solution For Valuable Skills (BSVS)</strong>.
-
-            </p>
-
-            <div class="info-grid">
-
-                <div class="info-box">
-
-                    <span>Student Name</span>
-
-                    <h3 id="studentName"></h3>
-
-                </div>
-
-                <div class="info-box">
-
-                    <span>Certificate Number</span>
-
-                    <h3 id="certificateNumber"></h3>
-
-                </div>
-
-                <div class="info-box">
-
-                    <span>Domain</span>
-
-                    <h3 id="domain"></h3>
-
-                </div>
-
-                <div class="info-box">
-
-                    <span>Issue Date</span>
-
-                    <h3 id="issueDate"></h3>
-
-                </div>
-
-                <div class="info-box">
-
-                    <span>Status</span>
-
-                    <h3>
-
-                        <span class="status-badge" id="status"></span>
-
-                    </h3>
-
-                </div>
-
-            </div>
-
-            <button onclick="window.location='index.html'">
-
-                <i class="fa-solid fa-arrow-left"></i>
-
-                Verify Another Certificate
-
-            </button>
-
+        <div class="result-card error-card" id="errorCard" hidden>
+          <div class="error-icon"><i class="fa-solid fa-xmark"></i></div>
+          <span class="error-pill">NOT FOUND</span>
+          <h1>Document Not Found</h1>
+          <p class="result-lead" id="errorLead">The document ID entered could not be found in the official BSVS database.</p>
+          <div class="result-actions">
+            <a class="primary-btn" href="index.html"><i class="fa-solid fa-arrow-left"></i> Back to Verification</a>
+            <a class="secondary-btn" href="home.html"><i class="fa-solid fa-house"></i> BSVS Website</a>
+          </div>
         </div>
-
-        <!-- Error -->
-
-        <div class="verify-card error-card" id="errorCard" style="display:none;">
-
-            <div class="error-icon">
-
-                <i class="fa-solid fa-circle-xmark"></i>
-
-            </div>
-
-            <h2>
-
-                Certificate Not Found
-
-            </h2>
-
-            <p>
-
-                The certificate number entered could not be found in the
-                official BSVS database.
-
-            </p>
-
-            <button onclick="window.location='index.html'">
-
-                <i class="fa-solid fa-arrow-left"></i>
-
-                Back to Verification
-
-            </button>
-
-        </div>
-
+      </div>
     </section>
+  </main>
 
-    <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Better Solution For Valuable Skills (BSVS)</p>
+      <span>Official Document Verification Portal</span>
+    </div>
+  </footer>
 
-    <footer>
-
-        <p>
-
-            © Better Solution For Valuable Skills (BSVS)
-
-        </p>
-
-        <span>
-
-            All Rights Reserved.
-
-        </span>
-
-    </footer>
-
-    <script type="module" src="js/verify.js"></script>
-
+  <script type="module" src="js/verify.js"></script>
+  <script>
+    // A module/import failure should never leave a visitor on an endless spinner.
+    window.addEventListener("error", function () {
+      var loading = document.getElementById("loadingCard");
+      var error = document.getElementById("errorCard");
+      if (loading && !loading.hidden && error) {
+        loading.hidden = true;
+        error.hidden = false;
+      }
+    });
+  </script>
 </body>
-
 </html>

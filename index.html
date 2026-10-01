@@ -1,211 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>BSVS Certificate Verification Portal</title>
-
-    <link rel="icon" href="assets/logo/TabIcon.png">
-
-    <link rel="stylesheet" href="css/style.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Official BSVS Certificate and Letter of Recommendation verification portal.">
+  <title>BSVS Document Verification</title>
+  <link rel="icon" href="assets/logo/TabIcon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+<body class="verification-home">
+  <header class="site-header compact-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="home.html" aria-label="BSVS main website">
+        <img src="assets/logo/logo.png" alt="BSVS - Better Solution For Valuable Skills">
+      </a>
+      <a class="nav-link" href="home.html"><i class="fa-solid fa-arrow-up-right-from-square"></i> BSVS Website</a>
+    </div>
+  </header>
 
-<body>
-
-    <!-- HEADER -->
-
-    <header>
-
-        <div class="container">
-
-            <div class="logo">
-
-    <img src="assets/logo/logo.png" alt="BSVS Logo" class="header-logo">
-
-</div>
-
-        </div>
-
-    </header>
-
-    <!-- HERO -->
-
-    <section class="hero">
-
-        <div class="hero-content">
-
-            <span class="hero-badge">
-
-                <i class="fa-solid fa-shield-halved"></i>
-
-                Official Verification Portal
-
-            </span>
-
-            <h1>
-
-                Verify BSVS Certificates
-
-            </h1>
-
-            <p>
-
-                Verify the authenticity of certificates issued by
-                <strong>Better Solution For Valuable Skills (BSVS)</strong>
-                instantly using the official verification system.
-
-            </p>
-
-        </div>
-
+  <main>
+    <section class="verify-hero">
+      <div class="container narrow">
+        <span class="eyebrow"><i class="fa-solid fa-shield-halved"></i> Official BSVS Document Portal</span>
+        <h1>BSVS Document Verification</h1>
+        <p>Verify a BSVS Certificate or Letter of Recommendation using its official document ID.</p>
+      </div>
     </section>
 
-    <!-- SEARCH -->
-
-    <section class="search-section">
-
-        <div class="search-card">
-
-            <div class="search-icon">
-
-                <i class="fa-solid fa-magnifying-glass"></i>
-
-            </div>
-
-            <h2>
-
-                Certificate Verification
-
-            </h2>
-
-            <p>
-
-                Enter the Certificate Number below.
-
-            </p>
-
-            <form id="verifyForm">
-
-                <div class="input-group">
-
-                    <input
-
-                        type="text"
-
-                        id="certificateNumber"
-
-                        placeholder="Enter Certificate Number"
-
-                        autocomplete="off"
-
-                        required>
-
-                </div>
-
-                <button type="submit">
-
-                    <i class="fa-solid fa-circle-check"></i>
-
-                    Verify Certificate
-
-                </button>
-
-            </form>
-
+    <section class="verify-search-wrap">
+      <div class="container narrow">
+        <div class="verify-search-card">
+          <div class="icon-circle"><i class="fa-solid fa-magnifying-glass"></i></div>
+          <h2>Verify a Document</h2>
+          <p>Enter a Certificate ID or LOR ID below.</p>
+          <form id="verifyForm">
+            <label class="sr-only" for="certificateNumber">Certificate or LOR ID</label>
+            <input type="text" id="certificateNumber" placeholder="e.g. BSVS-CLP26-FE-0001 or BSVS-LOR-001" autocomplete="off" required>
+            <button class="primary-btn" type="submit"><i class="fa-solid fa-circle-check"></i> Verify Document</button>
+          </form>
         </div>
 
+        <div class="trust-grid">
+          <div class="trust-card"><i class="fa-solid fa-database"></i><div><h3>Official Records</h3><p>Verification is checked against BSVS records.</p></div></div>
+          <div class="trust-card"><i class="fa-solid fa-bolt"></i><div><h3>Instant Results</h3><p>Get the verification result in seconds.</p></div></div>
+          <div class="trust-card"><i class="fa-solid fa-file-circle-check"></i><div><h3>Certificate + LOR</h3><p>The same verification page supports both.</p></div></div>
+        </div>
+
+        <div class="portal-cta">
+          <div>
+            <span class="mini-label">Explore BSVS</span>
+            <h2>Learn. Build. Grow.</h2>
+            <p>Explore our courses, career launch internships and upcoming learning opportunities.</p>
+          </div>
+          <a class="secondary-btn" href="home.html">Visit BSVS <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
     </section>
+  </main>
 
-    <!-- FEATURES -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Better Solution For Valuable Skills (BSVS)</p>
+      <span>Official Document Verification Portal</span>
+    </div>
+  </footer>
 
-    <section class="features">
-
-        <div class="feature-card">
-
-            <i class="fa-solid fa-shield-halved"></i>
-
-            <h3>
-
-                Secure Verification
-
-            </h3>
-
-            <p>
-
-                Every certificate is verified directly from the official BSVS database.
-
-            </p>
-
-        </div>
-
-        <div class="feature-card">
-
-            <i class="fa-solid fa-bolt"></i>
-
-            <h3>
-
-                Instant Results
-
-            </h3>
-
-            <p>
-
-                Certificate verification takes only a few seconds.
-
-            </p>
-
-        </div>
-
-        <div class="feature-card">
-
-            <i class="fa-solid fa-user-check"></i>
-
-            <h3>
-
-                Trusted Platform
-
-            </h3>
-
-            <p>
-
-                Trusted by recruiters, institutions and employers.
-
-            </p>
-
-        </div>
-
-    </section>
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        <p>
-
-            © Better Solution For Valuable Skills (BSVS)
-
-        </p>
-
-        <span>
-
-            All Rights Reserved.
-
-        </span>
-
-    </footer>
-
-    <script type="module" src="js/app.js"></script>
-
+  <script src="js/app.js"></script>
 </body>
-
 </html>
